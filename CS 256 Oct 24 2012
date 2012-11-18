@@ -1,0 +1,11 @@
+CS 256 Notes @ 10/14/2012
+
+**EXAM: Monday (29)
+
+PROJECT 2:
+	Maze, file reader;
+	- wants to read specified string length, ignore rest
+	- 4 separate sources minimum 
+	- NO Global Variables 
+	- NO file i/o , just IO-redirection 
+	- 

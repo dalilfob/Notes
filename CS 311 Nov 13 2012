@@ -1,0 +1,291 @@
+CS 311 @ 11/13/2012
+
+
+HOMEWORK #3 REVIEW:
+
+
+1. a) length is multiple of 3
+   
+   S -> aA | bA | empty
+   A-> aB | bA
+   B-> aS | bB
+
+ c) ...11...010...
+   ...010...11..
+
+   S-> 0S | 1S | 11A | 010B
+   A-> 0A | 1A | 010C
+   B-> 0B | 1B | 11C
+   C-> 0C | 1C| epsilon 
+
+
+  d) (ab)+a*(b | eps)
+
+    S-> abA
+    A-> abA | B
+    B-> aB | b | epsilon
+
+  e) identifiers 
+
+  S-> a..z | a..zA
+  A-> a..zA | 0--9A | _A | a...z | 0...9 
+
+2. Context free grammars
+
+    a) Na(x) != Nb(x) 
+
+        union of greater a's, or less a's 
+
+        S-> XaX | YbY 
+        X-> XaXbX | XbXaX | A
+        A-> aA | epsilon
+        Y-> YaYbY | YbYaY | B
+        B-> bB | epsilon  
+
+    b) 0^m 110^n 
+
+        S-> 00T00 
+        T-> 0T0 | V11 | 11V
+        V-> 0V | 0 
+
+    c) 0^nX1X1^R .. XnXn^R
+
+        (generate plaindromes) 
+
+        S-> 0SX | 0X
+        X-> aXa | bXb | epsilon
+
+    d) Regular expressins
+
+    R-> (empty set) | epsilon | a | b | R+R | RR | R* | (R)
+
+    e) Lisp expressions
+
+    S-> N | (R E)
+    N-> NN | 0...9
+    P-> + | - | * | / | max | min
+    E-> SE | S
+
+3. Ambigous grammars 
+    
+    A-> a | Aa | bAA | AAb | AbA 
+
+    String abaa
+
+    A => Aa => AbAA => abaa
+
+    A => AbA => abAa => abaa
+
+    Left most and right most derivations for each tree
+
+
+4. 
+
+    a) Delete empty, unit, and useless productions 
+
+        S-> aAS | B | a | empty
+        A-> SbA | SS | ba | empty
+        B-> aBC | bBA
+        C-> b | empty 
+
+        S-> empty, A-> empty, C-> empty
+
+        S'-> empty | S (because empty is in S, need to make a new nonterminal)
+        S -> aAS | B | a | aA | aS 
+        A -> SbA | Sb | bA | b | SS | S | ba
+        B -> aBC | aB | bBA | bB
+        C -> b
+
+    Delete single productions
+
+        S'-> aAs | a | aA | aS | empty | aBC | aB | bBA | bB
+        S -> aAs | a | aA | aS | aBC | aB | bBA | bB
+        A -> SbA | Sb | bA | b | SS | ba | aAs | a | aA | aS | aBC | aB | bBA | bB 
+        B -> aBC | aB | bBA | bB
+        C -> b 
+
+        B can never terminate 
+
+        so remove those rules that generate B
+
+        S'-> empty | aAS | aA | aS | a
+        S -> aAs | aA | aS | a
+        A -> SbA | Sb | bA | b | SS | aAS | aA | aS | a
+        C-> b
+
+        C not accessible so remove
+
+        PROPER FORM:
+
+        S'-> empty | aAS | aA | aS | a
+        S -> aAS | aA | aS | a
+        A -> SbA | Sb | bA | b | SS | aAS | aA | aS | a | ba
+
+
+
+    b) Convert to Chompsky normal form
+
+        S'   -> empty | <a><AS> | <a>A | <a>S | a
+        <a>  -> a
+        <AS> -> AS
+        S    -> <a><AS> | <a>A | <a>S | a
+        A    -> S<bA> | S<b> | <b>A | b | SS | <a><AS> | <a>A | <a> S | a | <b><a> 
+        <bA> -> <b>A
+        <b>  -> b
+
+
+===========================================================
+LECTURE
+===========================================================
+
+Pushdown Automata: 
+
+    E.g. L = {a^n b^n | n > 0} not regular
+
+        Does not exist fsa for L
+
+        Design recognizer  w-> [RECOGNIZER] -> yes if w in L | no if not in L
+
+        Can use counter or stack 
+
+        OPTOIN 1: Using counter 
+        c = getChar();
+            if( c!='a') { //reject and stop}
+
+        while(c == 'a') {
+            counter ++;
+            c = getChar() // next 
+        }
+        while (c == 'b') {
+            counter--
+            c = getChar() //
+        }
+        if ( c is endmarker && counter == 0) {
+            accepted
+        }
+        elese {
+            rejected
+        }
+
+        OPTION 2: Using stack
+
+        Stack S;
+        same as above except 
+        S.push()
+
+        then at b
+
+        S.pop()
+
+        if end marker && S.IsEmpty() 
+            accept 
+
+Definition: a NONDETERMINISITIC PUSHDOWN AUTOMATON (NPDA) is a 7-tuple 
+    M = (S, \sigma, \gamma, \delta, P0, Z0, F):
+
+        S       = finite set of states
+        \sigma  = finite alphabet of input symbols
+        \gamma  = finite alphabet stack symbols
+        \delta  = S x (\sigma union {empty}) x \gamma into finite subsets S x \gamma *
+        P0      = P0 \element S, the initial state
+        Z0      = Z0 \element \gamma , the initial stack symbol
+        F \subset S, the set of final states 
+
+        One-way read only input tape:
+
+            [ a | b | b | a | ... | |b] 
+
+        Finite Control P0 
+            - (head point to initial symbol in input tape)
+            - (point to top of stack)
+
+        Stack:
+            |   |
+            |   |
+            |   |
+            |   |
+            | Z |
+
+        \alpha = string of \gamma   
+        \delta ( P, a , Z) = (q, \alpha)
+
+            Recall: NFSA w/ e-moves
+                \delta = S x (\sigma \union {\epsilon}) -> 2  (powerset)
+
+        Example transition function: \delta( P1, a, Z_0) = { ( P2, \alpha )}
+            - \alpha = Z_0 , stack remains the same
+            - \alpha = Z_0, Z_0, push one Z_0 
+            - \alpha = \epsilon, pop
+
+        2 Ways to Describe a Language by a PDA:
+
+            - by final state model
+
+            - by empty stack 
+                - final states are useless in this case , just care about empty stack
+
+
+    The configuration of a PDA at a given instant is denoted by a triple (p , w, \alpha)\element
+    S x \sigma* x \gamma* , where
+
+        - p is the current state
+
+        - w is the input string remaining to be read
+            - the leftmost symbol of w is currently scanned
+
+        - \alpha is the contents of the stack 
+            - the left most symbol of \alpha is the top symbol on the stack
+
+    The language accepted by the PDA M = (S , \sigma, \gama, \delta , P_0, Z_0, F) by final state
+    denoted by L(M), is {x \element \sigma* | (P_0, x, Z_0) ---> (q, \epsilon, \alpha) for some
+    q \element F and \alpha \element \gamma* }
+
+        initial config -> accepting config  (leading to final state, nothing left to be read)
+
+    The language accepted by the PDA M = (S , \sigma, \gama, \delta , P_0, Z_0, F) by the 
+    Le(m) , is {x \element \sigma* | (P_0, x, Z_0)--> (q \epsilon \epsilon) for some q \element S}
+
+        initial config -> accepting config (stack is empty, don't care about final state)
+
+
+    Example. Construct a PDA to accept L = {a^n b^n | n>= 0} 
+
+        D = \delta in this case 
+
+        D(P0, a, Z0) = (P0, Z0Z0) // left most symbol = top symbol 
+        D(P0, b, Z0) = (P0, epsilon) // push nothing back  -> pop
+        D(P0, epsilon, Z0) = (P9, epsilon) // see nothing, pop out initial stack symbol, -> empty stack
+
+
+        How does it work to accept aabb?
+
+        Unfortunately accepts out of order strings  i.e. abab
+
+        Also, the P0, empty, Z0 transition lets you continously pop at the end of tape,
+        so it'll accept aaab
+
+
+        Correct PDA:
+            D = \delta, e = \epsilon
+
+                D(P0, a, Z0) = (P0, AZ0) // initial push
+                D(P0, a, A)  = (P0, AA)  // recursive push all remaining a's
+                D(P0, b, A)  = (P1, e)   // change state and pop 
+                D(P1, b, A)  = (P1, e)   // continous pop()
+                D(P1, e, Z0) = (P1, e)   // no more symbols with Z0 on top -> empty stack to accept L
+
+
+                Also need to accept empty string
+
+                D(P0, e, Z0) = (P0, e)   // empty Z0 to accept empty string
+                D(P0, a, Z0) = (P0, AZ0) // initial push
+                D(P0, a, A)  = (P0, AA)  // recursive push all remaining a's
+                D(P0, b, A)  = (P1, e)   // change state and pop 
+                D(P1, b, A)  = (P1, e)   // continous pop()
+                D(P1, e, Z0) = (P1, e)   // no more symbols with Z0 on top -> empty stack to accept L
+  
+
+
+
+
+

@@ -1,0 +1,82 @@
+CS 264 Notes @ 10/26/2012
+
+Know for test:
+
+Reading Integer
+Printing Integer
+Reading Array
+Storing in Array
+Printing Array
+difference between .space and .word
+(Don't have to know functions though)
+
+Big-endian, Little-endian , no clue how to do this
+
+Sign extend 2-digit hex to 4 digit hex, add 16 1s to the left for negative ?
+
+Q5. 
+
+la $t0, A      #load address of a into register t0 
+lw $t1, 4($t0)  #load element 1 into t1
+lw $t2, 8($t0)  #load element 2 into t2
+sw $t1, 8($t0)  #store t1 at 2nd element
+sw $t2, 4($t0)  #store t2 at 1st element
+
+EXAMPLE 1:
+
+	Suppose 0xF3 , extend this 8 bit value to 32 bit (8 hex digits)
+	left most bit is 1 because 
+	F3 = 1111 0011 
+	so in 32: 1111 1111 1111 (6 of these)
+	so it's 0xFFFFFFF3
+
+EXAMPLE 2:
+	0x9F extend to 32 (8 hex)
+	0xFFFFFF9F (also 6 Fs)
+
+EXAMPLE 3:
+	0x3F  = 0011 1111
+	left most bit is 0
+	so extend with 0s
+	0x0000003F
+
+Little Endian Big Endian Examples:
+
+Say you have:
+
+x: .word N(integer)
+Given that X  = 20  (or 100, or w/e address)
+
+4 Bytes:
+N = A B C D (binary representation) 
+
+Big endian:
+
+X:  20 : A
+	21 : B
+	22 : C
+	23 : D
+
+Little endian:
+
+X:  20 : D
+	21 : C
+	22 : B
+	23 : A
+
+So for,
+2 Bytes:
+
+	X = 100 (address 100)
+	N = A B 
+
+	put it in that form , for say... 3
+	0000 0011
+
+	Big Endian:
+		100 = 0000 0000
+		101 = 0000 0011
+
+	Little Endian:
+		100 = 0000 0011
+		101 = 0000 0000
