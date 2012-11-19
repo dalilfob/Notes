@@ -1,4 +1,3 @@
 Notes
 =====
-
-For some reason I can't get this to work :*(
+Fixed it, dunno how. Must be a genius. 
