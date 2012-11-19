@@ -1,0 +1,34 @@
+CS 264 Notes @ 11/5/2012
+
+Lab 3 Explaination:
+	
+	- load each integer separately, via l1, t1,t2,t3...etc
+
+    - All represented by 2s complement, therefore when printing
+    will print as 2s complement and if there are differences give
+    an explaination 
+
+    - for each integer shift right logical 1 bit
+    	- store in another register and print them
+
+    etc for the rest
+
+    keep spaces so you can comment
+
+    print the program & the output
+    
+    give an explaination (perhaps in the program code) of
+    each operation and how it was done and why that was the output
+
+    (can do either in program or printout, as long as it makes sense which operation
+    is being performed)
+
+    
+Two's Example:
+    100000 (32 negative though)
+    011111
+         1
+    ------
+    100000
+    convert to dec: 32, it's negative, so -32
+

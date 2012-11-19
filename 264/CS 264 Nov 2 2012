@@ -1,0 +1,17 @@
+CS 264 Notes @ 11/2/2012
+
+Functions:
+	a0,a1,a2,a3  are used for passing parameters
+	v0,v1        returning values
+
+Quiz Monday On:
+	Lab 1 & Lab 2 similar programs
+
+Test2 Q4:
+
+li $t0,2^31 - 1 
+	0111...111  #twos complement form
+
+li t2,-127 
+	127 = 2^7 - 1
+	2^7 to 2s = 2^7 - 1 -> 0

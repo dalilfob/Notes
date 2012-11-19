@@ -1,0 +1,106 @@
+CS 256 Notes @ 11/7/2012
+
+Constructors: automatic initialization of class data
+	- called when objects are declared
+	- consturctor has same name as class
+
+Default Constructor has no parmeters:
+	- should always be defined
+
+Class member variables
+	- Can be objects of other classes
+		- Require initialization-section
+
+
+Constant call-by-reference parameters:
+	- More efficient than call-by-value
+		- Because you're not creating a whole new object 
+
+Can inline very short function definitions:
+	- Can improve efficiency
+
+Static member variables
+	- Shared by all objects of a class
+
+Vector classes:
+	Like arrays that grow and shrink
+
+
+EXAMPLE OF INLINE:
+	
+	class Complex{
+		private:
+			double real,imag;
+			static int objCount;
+
+		public:
+			Complex (double real = 0, double imag = 0) {
+				Complex::real = real;
+				Complex::image = image;
+			} // inline, small function straight in the header 
+	}
+
+OPERATOR OVERLOADING:
+
+	Way 1:
+		class Complex
+		{
+		public:
+		        Complex(double re,double im)
+		                :real(re),imag(im)
+		                {};
+		        Complex operator+(const Complex& other);
+		        Complex operator=(const Complex& other);
+		private:
+		        double real;
+		        double imag;
+		};
+		Complex Complex::operator+(const Complex&  other)
+		{
+		    double result_real = real + other.real;
+		    double result_imaginary = imag + other.imag;
+		    return Complex( result_real, result_imaginary );
+		}
+
+	Way 2, define it globally:
+
+		friend Complex operator+(Complex); 
+
+		Complex operator+(const Complex  &num1, const Complex &num2)
+		{
+		    double result_real = num1.real + num2.real;
+		    double result_imaginary = num1.imag + num2.imag;
+		    return Complex( result_real, result_imaginary );
+		}
+
+
+Built in operators:
+	- + , -, = , %, == , / , *
+
+
+bool Complex::equals (const Complex& lhs) {
+	return *this == lhs; // *this refers to object making the call 
+}
+
+
+
+Now, if you don't return say:
+
+	const Complex operator*(const Complex& lhs, const Complex& rhs) {
+		...
+	}
+
+	if you don't return as const
+
+	you can do stupid shit like:
+		(c1 + c2).set(10,1);
+
+Example:
+	c3 = c1 + c2;  // created 
+
+Returning const:
+	you can't do (c1 + c2).set(blah) // can't modify anonymous object
+	BUT you can do (c1 + c2).print() , because print is a constant function 
+
+	AND const can only call const 
+

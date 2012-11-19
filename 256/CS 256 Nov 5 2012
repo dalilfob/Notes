@@ -1,0 +1,29 @@
+CS 256 Notes @ 11/5/2012
+
+Note:
+	When doing 
+	Complex(double real = 0, double image = 0);
+
+	can only use this in prototype
+
+	actual function definition
+
+	will NOT allow defaulting values
+
+	so header: give default in the stub
+	   source: do not do that stuffs...
+
+------------------------------------------------
+
+Class Type Member Variables:
+	- Class member variables can be any type
+	- Including objects of other classes
+	- Type of class relationship
+		- Powerful OOP principle
+
+	-Need special notation for constructors
+		- So they can call "back" to member object's constructor
+
+Only Static member function can access static data members 
+Static data members must be initialized 
+
