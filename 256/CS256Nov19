@@ -1,0 +1,12 @@
+CS 256 Notes @ 11/19/2012
+
+Project 3 will be posted, p.600 something, #2...
+Due Monday.
+
+For dynamic data you have to have:
+	- Copy Constructor
+        - Destructor
+	- Overloaded assignment ('=') operator
+
+Summary on Dynamic Data:
+	
