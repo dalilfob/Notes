@@ -1,0 +1,33 @@
+CS 301 Notes @ 11/27/2012
+
+FINAL ON THURSDAY:
+
+  - First section, taylor's theorem, error
+
+  - Root finding definitely 2+ questions
+    Bisection, Secant, Newtons, False Position (NO MODIFIED)
+
+  - Interpolation:
+      -Direct
+      -Divided
+      -Lagrange 
+      - NEWTONS form
+    -Probably no derivations
+
+  - Integration:
+      -Upper / Lower
+      -Trapezoidal
+      -Simpsons 1/3 
+
+      and composite for both
+
+      -ROBERGS , basic idea of robergs and composite trapezoidal
+      put it into trapezoid rule (2^n) 
+
+       R(n,0) <-- have to memorize this
+
+   - DEFINITELY linear interpolation:
+     -Cramers
+     -Gauss Naieve
+     -Pivoting 
+
