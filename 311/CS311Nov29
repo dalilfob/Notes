@@ -1,0 +1,142 @@
+CS 311 Notes @ 11/29/2012
+-------------------------
+
+Homework 4 Review:
+  
+  1. DPDA
+    (a) 
+        D(P0, 1, Z0) = (P0, 1Z0)
+        D(P0, 1, 1) = (P0, 11)
+
+        D(P0, 0, 1) = (P1, e)
+        D(P1, e, 1) = (P2, e)
+        D(P2, 0, 1) = (P1, e)
+        D(P2, e, Z0) = (P2, e)
+
+        D(P0, 2, 1) = (P3, 1) 
+        D(P3, 2, 1) = (P4, e)
+        D(P4, 2, 1) = (P3, 1) 
+        D(P4, e, Z0) = (P4, e) // accept 
+
+    (b) {a^n ba^m ba^(m+n) | m,n >=0}
+
+        D(P0, a, Z0) = (P0, AZ0) < store n
+        D(P0, a, A)  = (P0, AA)  <
+        D(P0, b, A)  = (P1, A)   // 1st b
+        D(P1, a, A) = (P1, AA)   // store m 
+        D(P1, b, A) = (P2, A)    // 2nd b
+        D(P2, a, A) = (P2, e)    //
+        D(P2, e, Z0) = (P2, e)   // accept m,n > 0 case
+        D(P0, b, Z0) = (P1, Z0)  // Go to P1 transition
+        D(P1, a, Z0) = (P1, A)   // allow push A for n = 0
+        D(P1, b, Z0) = (P1, e)   // accept n = m = 0
+       
+  2. NPDA
+    
+      (a) a^n b^m c^k | m + k = n } > 0 
+
+        D(P0, a, Z0) = (P0, AZ0)
+        D(P0, a, A)  = (P0, AA)
+        D(P0, b, A)  = (P1, e) 
+        D(P1, b, A)  = (P1, e) // pop all a's for b's
+        D(P1, c, A)  = (P2, e) 
+        D(P2, c, A)  = (P2, e) // pop a's for c's
+        D(P2, e, Z0) = (P2, e) // accept 
+
+
+      (b) same as a, except  n + k = m } > 0 
+
+        Can divide problem into a^n b^n b^k c^k 
+
+        D(P0, a, Z0) = (P0, AZ0) // store n
+        D(P0, a, A)  = (P0, AA)
+        D(P0, b, A)  = (P1, e) 
+        D(P1, b, A)  = (P1, e)   // pop m
+        D(P1, b, Z0) = (P1, BZ0) // don't need to change state if we push B
+        D(P1, b, B)  = (P1, BB)  // continous push , store k
+        D(P1, c, B)  = (P2, e) 
+        D(P2, c, B)  = (P2, e) // continous pop b for c's
+        D(P2, e, Z0) = (P2, e) // accept 
+
+      (c) 0^i 1^j , 3i = 4j GOT THIS BACKWARDS
+          SHOULD have been 0000111 not 0001111
+
+          push 3 0s, ignore 4th, repeat, pop 1 for each 0 
+        
+        D(P0, e, Z0) = (P0, e) // accept empty
+        D(P0, 0, Z0) = (P0, 000Z0)
+        D(P0, 0, 0)  = (P0, 0000)  // push 3 0s for each 0
+        D(P0, 1, 0)  = (P1, e)   <
+        D(P1, e, 0)  = (P2, e)   <
+        D(P2, e, 0)  = (P3, e)   <  pop 4 0s for each 1
+        D(P3, e, 0)  = (P4, e)   <
+        D(P4, 1, 0)  = (P1, e)   <
+        D(P4, e, Z0) = (P4, e)  // accept 
+
+        Alternate Method:
+
+        D(P0, e, Z0) = (P0, e)
+        D(P0, 0, Z0) = (P1, Z0) // push nothing, just switch states
+        D(P1, 0, Z0) = (P2, Z0)
+        D(P2, 0, Z0) = (P3, Z0)
+        D(P3, 0, Z0) = (P0, 0Z0) // every 4th 0 push 1 symbol
+        D(P0, 0, 0)  = (P1, 0) 
+        D(P1, 0, 0)  = (P2, 0)
+        D(P2, 0, 0)  = (P3, 0)
+        D(P3, 0, 0)  = (P0, 00) // every 4th 0 push 1 symbol (0 on top case)
+        D(P0, 1, 0)  = (P4, 0) 
+        D(P4, 1, 0)  = (P5, 0)
+        D(P5, 1, 0)  = (P6, e) // pop 0 for every 3rd 1
+        D(P6, 1, 0)  = (P4, 0) // recurse
+        D(P6, e, Z0) = (P6, e) // accept
+
+
+      (d) a's before b's , Na = Nb, c's anywhere 
+
+        D(P0, c, Z0) = (P0, Z0) // do nothing at c
+        D(P0, a, Z0) = (P0, AZ0)
+        D(P0, a, A)  = (P0, AA)
+        D(P0, c, A)  = (P0, A) 
+        D(P0, b, A)  = (P1, e)
+        D(P1, b, A)  = (P1, e)
+        D(P1, c, A)  = (P1, A)
+        D(P1, c, Z0) = (P1, Z0)
+        D(P1, e, Z0) = (P1, e) // accept
+        D(P0, e, Z0) = (P0, e) // accept
+        
+
+      (e) Well formed parentheses: () (()) ()() , balanced parens w/o empty  
+        
+        assert a = ( , b = ) 
+
+        D(P0, a, Z0) = (P1, AZ0) 
+        D(P1, a, A)  = (P1, AA)
+        D(P1, b, A)  = (P1, e) // recursive pop left paren for right parens
+        D(P1, a, Z0) = (P1, AZ0) // paralell paren case
+        D(P1, e, Z0) = (P1, e)  // accept 
+
+    
+    3. D(q, e, S) = (q, begin A end)
+       D(q, e, A) = {(q, A;A), (q,a), (q,S)}
+
+       D(q, begin, begin) = (q,e)
+       D(q, end, end)     = (q,e)
+       D(q, ;, ;)         = (q,e)
+       D(q, a, a)         = (q,e)
+
+    
+    4. Regular / Context Free
+
+      (a) no / yes
+      (b) yes / yes
+      (c) yes / yes
+      (d) no / no 
+      (e) no / yes
+
+
+ IN CLASS EXERCISE #2:
+ ---------------------
+ See notebook for drawings of machines
+
+ FINAL EXAM ON THURSDAY (?) 
+        
