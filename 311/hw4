@@ -1,0 +1,141 @@
+D = delta
+e = epsilon
+
+
+1. DPDA
+
+(a) 1^{2m}0^{m} | m > 0 } u {1^{n}2^{2n} | n > 0}
+
+  D(P0, 1, Z0) = (P1, 1Z0)
+          D(P1, 1, 1)  = (P1, 11)   // Continous push 1's
+          D(P1, 0, 1)  = (P2, e)    < Pop 2 1's for each 0
+            D(P2, e, 1)  = (P3, e)    <
+              D(P3, 0, 1)  = (P2, e)    < (P3 required for determinism)
+          D(P3, 1, Z0) = (P4, 1Z0)  // For 1^n state
+          D(P4, 1, 1)  = (P4, 11)   // Continous push 1's 
+          D(P4, 1, 1)  = (P5, 1)    < Pop 1 0 for ever 2 2's
+            D(P5, 1, 1)  = (P6, e)    < 
+              D(P6, 1, 1)  = (P5, 1)    < 
+                D(P6, e, Z0) = (P6, e)    // accept 
+
+        (b) {a^{n}ba^{m}ba^{m+n} | m, n >= 0}  
+
+          bb
+            aabbaa
+              aabaabaaaa
+                baaabaaa
+
+                  D(P0, a, Z0) = (P1, AZ0) 
+          D(P0, b, Z0) = (P4, Z0)  // for n = 0
+          D(P1, a, A) = (P1, AA)   // continous push A
+          D(P1, b, A) = (P2, A)    // switch states for m
+          D(P2, a, A) = (P2, AA)   // continuous push A
+          D(P2, b, A) = (P3, A)    // switch states to pop m+n a's
+          D(P3, a, A) = (P3, e)    // continous pop
+          D(P3, e, Z0) = (P3, e)   // accept
+          D(P4, b, Z0) = (P5, Z0)  // m & n = 0
+          D(P4, a, Z0) = (P2, AZ0) // continue from p2
+          D(P5, e, Z0) = (P5, e)   // accept
+
+
+        2. NPDA 
+
+        (a) {a^{n}b^{m}c^{k} | m + k = n and n,m,k > 0}
+
+          D(P0, a, Z0) = (P1, AZ0)
+          D(P1, a, A)  = (P1, AA)  // continuous push A
+          D(P1, b, A)  = (P2, e)   < 
+            D(P2, b, A)  = (P2, e)   < continuous pop
+              D(P2, c, A)  = (P3, e)   // switch state to ensure order
+          D(P3, c, A)  = (P3, e)   // continuous pop
+          D(P3, e, Z0) = (P3, e)   // accept 
+
+        (b) {a^{n}b^{m}c^{k} | n + k = m and n,m,k > 0}
+
+          Push a's, pop a's for b's, push remaining b's,  pop b's for c's, accept e 
+
+            D(P0, a, Z0) = (P1, AZ0)
+          D(P1, a, A)  = (P1, AA)  // continous push A
+          D(P1, b, A)  = (P2, e)   < continuous pop
+            D(P2, b, A)  = (P2, e)   <
+              D(P2, b, Z0) = (P3, BZ0) // push Bs
+          D(P3, b, B) = (P3, BB)   // continouous push B
+          D(P3, c, B) = (P4, e)    < 
+            D(P4, c, B) = (P4, e)    < continous pop Bs
+              D(P4, e, Z0) = (P4, e)   // accept
+
+
+        (c) {0^{i}1^{j} | 3i = 4j, and i,j >= 0}
+          
+          accepts e
+            3 & 4 factors of 12 
+              0001111
+                00000011111111 
+
+                  D(P0, e, Z0) = (P5, Z0)  // accept empty string 
+          D(P0, 0, Z0) = (P1, 0Z0) <
+            D(P1, 0, 0) = (P2, 00)   <  
+              D(P2, 0, 0) = (P3, 00)   < every 3rd 0, push 1 more
+                D(P3, e, 0) = (P4, 00)   < 
+                  D(P4, 0, 0) = (P1, 00)   <
+                      D(P3, 1, 0) = (P5, e)    // pop 0 for 1
+            D(P5, 1, 0) = (P5, e)    // continuous pop 0s
+            D(P5, e, Z0) = (P5, e)   // accept
+
+        (d) Na = Nb, b comes after a, c's go anywhere but don't care how many
+          
+          (Whenever we encounter c, do nothing)
+          e accepted
+
+            D(P0, e, Z0) = (P*, Z0)  // accept empty
+          D(P0, c, Z0) = (P0, Z0)  // do nothing
+          D(P0, a, Z0) = (P1, AZ0) 
+          D(P1, a, A)  = (P1, AA)  // continuous push A
+          D(P1, c, A)  = (P1, A)   // do nothing
+          D(P1, b, A)  = (P2, e)   
+          D(P2, b, A)  = (P2, e)   // continuous pop
+          D(P2, c, A)  = (P2, A)   // do nothing
+          D(P2, e, Z0) = (P2, e)   // accept 
+
+        (e) { Well formed parentheses (wfp) | wfp is defined recursively as follows:
+                  (1) () is a wfp
+                            (2) If x and y are wfp, then so are xy, and (x) }
+
+                                Nested () allowed and ()()() allowed
+                                    Assert a = (
+                                                               b = )   
+              Because it's hard to understand the transitions otherwise
+
+                    (())  ()()(())
+              aabb  ababaabb
+
+                D(P0, a, Z0) = (P1, AZ0)
+          D(P1, a, A) = (P1, AA)   // continuous push (
+          D(P1, b, A) = (P2, e)    // pop
+          D(P2, b, A) = (P2, e)    // continous pop
+          D(P2, e, Z0) = (P2, e)   // accept
+          D(P2, a, A)  = (P1, AA)  // push more (
+          D(P2, a, Z0) = (P1, AZ0) // recurse 
+
+
+        3. M({q}, {begin, end, ;, a}, {begin, end, ;, a, S, A}, D, q, S, \theta)
+
+           D(q, e, S) = {(q, begin A end)}
+              D(q, e, A) = {(q, A;A)}
+                 D(q, e, A) = {(q, a)}
+                    D(q, e, A) = {(q, S)}
+
+                       D(q,begin,begin) = (q,e)
+           D(q,end,end) = (q,e)
+           D(q,;,;) = (q,e)
+              D(q,a,a) = (q,e)
+
+
+        4.
+          Regular / CFG
+
+              (a) no  / yes
+                (b) yes / yes
+                  (c) yes / yes
+                    (d) no / yes
+                      (e) no / no  
