@@ -36,7 +36,48 @@ Figure * fs = new Circle(5);
           var2 = temp;
   }
 
- 
+EXAM FRIDAY DEC 7, 11:30pm - 1:30pm
+
+Office hours:
+  Monday Dec 3, 8:30am - 9:15am
+  Wednesday Dec 5, 9am-10am
+
+  Matrials turn in deadlin:
+    Friday Dec. 7, before 11:30am
+
+    Function Template, Class Template...
+
+
+ Final Exam:
+
+  Basics, Flow of Control, Functions
+
+  Function Parameters passing and Overloading, call by reference
+
+  Arrays
+  
+  Structs and Classes
+  Constructors and other tools
+
+  Call by array is different from others
+
+  Operators overloading:
+    - cin, cout, +/-/*/ everything
+
+  Pointers
+
+  Recursive 
+
+  Exception Handling (?) maybe
+
+  Inhertiance
+
+  Polymorphism and Virtual Functions
+
+  Templates: class & functions
+
+
+  3. Definition questions, code fragment, 2 big coding problems 
 
 
 
