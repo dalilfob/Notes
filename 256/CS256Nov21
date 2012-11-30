@@ -1,0 +1,15 @@
+CS 256 Notes @ 11/21/2012
+-------------------------
+
+  Final topics:
+    - Inheritance:
+        class Rectangle : public Figure ...
+
+    - Pointers
+    - Dynamic memory
+    - Overloading / Operator Overloading 
+    - Copy constructor
+    - Destructor
+    - Other crap which I tuned out...
+    
+
