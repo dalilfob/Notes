@@ -1,3 +1,3 @@
 Notes
 =====
-Fixed it, dunno how. Must be a genius. 
+Don't know what quickbooks are. 
