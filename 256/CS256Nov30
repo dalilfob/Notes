@@ -1,0 +1,51 @@
+CS 256 Notes @ 11/30/2012
+-------------------------
+
+Figure * fs = new Circle(5);
+
+  fs->getArea(); 
+  (*fs).getArea();
+
+  CAN NOT use . operator on pointer itself, not a member, have to dereference. 
+
+  Virtual function, declare 'virtual' in base class, requires derived classes
+  to implement said function. 
+
+  Pure Virtual Functions:
+  ----------------------
+
+  Similar to abstract/interfaces in Java
+
+  virtual int fn() = 0; // pure virtual function 
+  virtual double getArea() = 0; 
+
+  Abstract class: Can not instantiate an object of that class
+
+  Pure virtual function: all derived classes must implement this function,
+    also can not instantiate an object of this. 
+
+
+
+  Function Templates:
+    
+  template <class T>
+  void swap(T& var1, T& var2) {
+          T temp;
+          temp = var1;
+          var1 = var2;
+          var2 = temp;
+  }
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
