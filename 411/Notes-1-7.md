@@ -77,4 +77,7 @@ Output: 3 Address Instructions
   x = 10 * 2 [folded to]=> x = 20
  - Strength Reduction
   x * 2 [replaced]=> x + x
+  x **2 [replaced]=> x * x
 
+2. Global Improvement 
+- Data flow analysis for loop optimization
