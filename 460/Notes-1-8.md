@@ -27,8 +27,10 @@
 - Confidentiality
   - Data confidentiality
   - Privacy
-  
-    Secure from ...
+
+
+        Secure from ...
+
 
 - Integrity
   - Data integrity
@@ -48,8 +50,10 @@
 
 - Accountability/Provenance/Non-Repudiation
   - The security goal that generates the requirement for actions of an entity to be traced uniquely to that entity
+    
 
-    Can I find out how f***ed my s*** up?
+        Can I find out how f***ed my s*** up?
+
 
 - Trust and social engineering
 
@@ -68,11 +72,15 @@
 - Attacks (threats carried out)
   - Passive: does not affect system resources
   
+
       Reading/Capturing information between two points
 
+
   - Active: attempt to alter system resources or affect their operation
-      
+
+
       Changes information between two points
+
 
   - Insider: initiated by an entity inside the security parameter
 
