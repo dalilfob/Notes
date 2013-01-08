@@ -18,4 +18,47 @@
 
     Goal:  Always think about security from inception
 
+### A possible pathway..
+- This course
+- Security+ certification during the summer
+- Advanced security course in fall
 
+###The CIA Triad
+- Confidentiality
+  - Data confidentiality
+  - Privacy
+  
+    Secure from ...
+
+- Integrity
+  - Data integrity
+  - System Integrity
+- Availability
+
+###FIPS PUB 199
+- Federal information processing standards PUBlication
+
+- *Confidentiality*: preserving authorized restructions on information access and disclosure
+- *Integrity*: Guarding against improper information modification or destruction including ensuring information
+- *Availability*: ensuring timely and reliable access to and use of information
+
+###Beyond CIA
+- Authenticity
+  - The property of being genuine and being able to be verified and trusted
+
+- Accountability/Provenance/Non-Repudiation
+  - The security goal that generates the requirement for actions of an entity to be traced uniquely to that entity
+
+    Can I find out how f***ed my s*** up?
+
+- Trust and social engineering
+
+###Vulnerabilities & Threats
+- Vulnerabilities
+  - Flaw or weakness in system/data/user
+  - Example:
+    - Leaky (absense of confidentiality guarentee)
+    - Corrupted (absence of integrity guarentee)
+    - Unavailable or very slow (loss of availability guarentee)
+
+###Threat 
