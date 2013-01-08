@@ -62,3 +62,18 @@
     - Unavailable or very slow (loss of availability guarentee)
 
 ###Threat 
+- Can't see 
+
+###Attacks
+- Attacks (threats carried out)
+  - Passive: does not affect system resources
+  
+      Reading/Capturing information between two points
+
+  - Active: attempt to alter system resources or affect their operation
+      
+      Changes information between two points
+
+  - Insider: initiated by an entity inside the security parameter
+
+
