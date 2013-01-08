@@ -90,3 +90,43 @@
 - Interception: An unauthorized entity directly accesses sensitive data traveling between authorized sources and destinations
 - Inference: A threat action whereby an unauthorized entity indirectly accesses sensitive data ( but not necessarily the
 data contained in the communication) by reasoning from characters or byproducts of comminications.
+
+    How to think about security...
+
+###Deception
+- Masguerade: An unauthorized entity gains access to a system or performs a malicious act by posing as an authorized entity...
+
+...
+
+###Disruption
+- Incapacitation: Prevents or interrupts system operation by disabling a system component
+
+
+    DDOS, etc, put system out of network
+
+
+...
+
+###Usurpation
+- Misappropriation: An entity assumes unauthorized...
+...
+
+###Categorize?
+- Can you categorize the attacks in pasive-active?
+
+###Security Mechanisms
+- Feature designed to detect, prevent, or recover from a security attack
+- No single mechanism that will support all services required
+- However, one particular element underlies many of the security mechanisms in use:
+  - *cryptographic techniques*
+   
+- Specific security mechanisms:
+  - Encryption, Hashing, Message Authentication, Digital Signature, Access Control
+
+= Pervasive Security Mechanisms:
+  - Security management, Security audict and evaluation, Incident detection and Response
+
+
+## Reading Assignment
+- Textbook Chapter 1
+- FIPS PUB 199
