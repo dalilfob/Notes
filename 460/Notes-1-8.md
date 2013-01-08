@@ -5,15 +5,15 @@
 
 ###Goal of the Course
 
--Developing a security mindset
+- Developing a security mindset
   
-  -security as it applies to people's interaction with the digital world
+  - security as it applies to people's interaction with the digital world
 
--A very broad area
+- A very broad area
  
-  -Some fundamental topics will be covered in this course
+  - Some fundamental topics will be covered in this course
  
-  -Topics such as web & cloud security in ... (can't see)
+  - Topics such as web & cloud security in ... (can't see)
     
     Goal:  Always think about security from inception
 
