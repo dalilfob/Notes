@@ -73,15 +73,20 @@
   - Passive: does not affect system resources
   
 
-      Reading/Capturing information between two points
+        Reading/Capturing information between two points
 
 
   - Active: attempt to alter system resources or affect their operation
 
 
-      Changes information between two points
+        Changes information between two points
 
 
   - Insider: initiated by an entity inside the security parameter
 
 
+###Unauthorized Disclourse
+- Exposure: Sensitive data are directly released to an unauthorized entity.
+- Interception: An unauthorized entity directly accesses sensitive data traveling between authorized sources and destinations
+- Inference: A threat action whereby an unauthorized entity indirectly accesses sensitive data ( but not necessarily the
+data contained in the communication) by reasoning from characters or byproducts of comminications.
