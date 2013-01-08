@@ -10,5 +10,5 @@
  -Some fundamental topics will be covered in this course
  -Topics such as web & cloud security in ... (can't see)
     
-   Goal:  Always think about security from inception
+    Goal:  Always think about security from inception
 
