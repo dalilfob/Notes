@@ -1,7 +1,7 @@
 #CS 460 Secure Communications
 ## 1/8/2013
 
-  Note: Textbook Required
+    Note: Textbook Required
 
 ###Goal of the Course
 -Developing a security mindset
