@@ -245,10 +245,10 @@ Attack Vector
   - Tactics correspond to Area
 - Strong, Enforced, and Tested Security Policy 
 
-
+'''
     Clean your online presence (search your name on google) 
-
+'''
 
 ###No Free Lunch
-- Type netsat in cmd prompt when going to say a movie pirating site
+- Type netstat cmd prompt when going to say a movie pirating site
   - 20/25 connections may be open 
