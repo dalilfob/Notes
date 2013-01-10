@@ -149,3 +149,76 @@ Attack Vector
   - Never trust email addresses unless validated (later on in the course) 
 - Anxiety / fear approach
 - The subopena spoof was sent with an infected PDF file 
+
+
+    Do not trust any attachments unless you are absoloutely aware of the contents
+
+#### Example of Spear Phishing 2
+- Linkedin invite by Bill Gates 
+  - Fake login page
+
+###Social Engineering from an Online Social Networking Perspective
+- An exploitation of **trust**
+  - A social network is a platform built on trust
+
+- *Huge* attack surface
+- Quick and easy, even automated
+  - e.g. botnet to gater email address for phishing
+- Low barrier entry point (skills not necessarily required)
+- Often relies on publicly available information 
+
+- Trust model
+  - No real authentication
+  - Easy to impersonate someone else or set up profile
+- Influential
+  - ... 
+  - Based on 'like' mechanism of Facebook & Google+
+
+### Impersonation in the Real World
+- Takes money (to buy police costumes)
+- May invovle other criminal activities ("procuring" police costumes, impersonation public offical, physically harming victims)
+- Takes a lot of planning
+
+### The Robin Sage Experiment
+- 28 day experiemnt run by Provide Security
+- Security researchers created a fake Facebook, Twitter and Linkedin profile under the alias Robin Sage
+- They use da photo of an attractive girl from an adult website
+- They have her the job title "Cyber Threat Analyist"
+- Established relations with more than 500 companies (global agencies, DOD, Fortune 500, etc)
+- Got connected from 300 security officials, gathered leaked information from online
+
+### Discrepancies
+- 10 years of cyber security expereience at 25 years of age
+- Robin Sage is the name of a military exercise
+  - AND 
+- OBVIOUSLY did not know this person ... still they allowed connections 
+
+
+    Keep this experiment in mind; why connect with people you do not know
+
+###Terremark: Company Picnic, 2009
+- An emplyoee, Bob, posted on his facebook profile that he would be attending a company picnic
+- Attackers hijacked Bob's Facebook account and sent out a message after the picnic that read:
+   - Hey Alice, look at the pics I took of us last weekend at the picnic. Bob
+   - Alice clicked on the accompanying link, installed a key-logger
+   - The attacker used Alice's company logon to access the company network for two weeks gaining control over 2 servers   
+
+
+### Koobface Virus
+- Users receive a message on their Facebook inbox:
+  - You look funny in this new video
+  - Look, you were filmed!
+  - Yo look just awesome in this movie
+- User clicks on (malicious) URL to view 
+  - Requires fake update of flash-player **LOOKS AUTHENTIC** 
+
+###Reconnaissance
+- Personal information (phone, dob, address, etc)
+  - often publicly available (directly or indirectly)
+  - your friends post a message wishing you a happy birthday 
+- Answers to secret quetions
+- Company profile, etc...
+
+*Note*: Randy Zuckerberg scandal
+
+
