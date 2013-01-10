@@ -221,4 +221,34 @@ Attack Vector
 
 *Note*: Randy Zuckerberg scandal
 
+- Inferrance of data (discover DOB by high school graduation date) 
 
+
+    This information can eaisly craft a Spear Phishing attack
+
+### Alarmingly
+- Most of the time people spend on scoail networking sites is during office hours 
+
+### Reverse Social Engineering
+- An alternate approach to social engineering is called reverse social engineering
+- Here, the attacker hopes to convince the target to initiate the contact
+  - The attacker may be succesful because the target initiates contact 
+
+- Methods of convincing the target to make the initial contact include:
+  - Sending out a spoofed e-mail claiming to be from a reputable source that provides another e-mail/contact info
+  - Posting a notice or creating a bogus Welcome message
+  - Renting 800 numbers as eaisly as $10/hr
+
+### Combating Social Engineers
+- User Education and Training
+- Identifying Ares of Risk
+  - Tactics correspond to Area
+- Strong, Enforced, and Tested Security Policy 
+
+
+    Clean your online presence (search your name on google) 
+
+
+###No Free Lunch
+- Type netsat in cmd prompt when going to say a movie pirating site
+  - 20/25 connections may be open 
