@@ -245,9 +245,9 @@ Attack Vector
   - Tactics correspond to Area
 - Strong, Enforced, and Tested Security Policy 
 
-'''
+```
     Clean your online presence (search your name on google) 
-'''
+```
 
 ###No Free Lunch
 - Type netstat cmd prompt when going to say a movie pirating site
