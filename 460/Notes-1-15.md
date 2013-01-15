@@ -142,3 +142,29 @@ _ chosen ciphertext
 - If you know the length of the key 
   - Chop into columns , then apply frequency analysis 
 
+### One-Time Pad
+- If a truly random key is long as the message is used...
+...
+...
+
+### Transposition Ciphers
+- Now consider classical **transposition* or **permutation** ciphers
+...
+...
+
+### Rail Fence Cipher
+- Write message letters out diagonally over a number of rows
+- Then read off cipher row by row
+- e.g. write message out in a zig-zag 
+```
+  m  e 
+   e  t
+```
+
+### Product Ciphers
+- Ciphers using substitutions or transpositions are not secure because of language characteristics
+
+## Reading Assignment
+- Chapter 2 Section 2.1
+- Chapter 20 Section 20.1
+
