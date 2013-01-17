@@ -49,6 +49,7 @@ E -> aC
 ```
 
 1. Delete epsilon-production:
+
 ```
 E = {B,C}
 
@@ -60,6 +61,7 @@ E -> aC | a
 ```
 
 2. Delete single-productions
+
 ```
 B -> Sb | bCC | bC | b | CC | DaE | abb | DD
 ```
@@ -77,11 +79,14 @@ E -> aC | a
 ```
 
 4. Delete inaccessible symbols
+
 ```
 A = {S,a,B,b,C}
 E is inaccessible => remove
 ```
+
 **Proper Form**:
+
 ```
 S -> aBa | aa
 B -> Sb | bCC | bC | b | CC | C  
@@ -102,6 +107,7 @@ C -> <a><bb>
 ```
 
 ### CYK Example
+
 ```
 S -> AB | CA
 A -> a
@@ -124,6 +130,7 @@ Matrix table:
 - See drawing
 
 ### PDA 
+
 ```
 [a][b][a][b][b][b][a] } one way read only input tape
 ^
@@ -146,19 +153,27 @@ D(P,a,Z) = (q,g)
 
 ### NPDA
 - Machine always makes correct choice
+
 ```
 D(P,a,Z) = {(q1,r1),(q2,r2)}
 ```
 
 #### Definition of NPDA
 A nondeterministic Pushdown Automaton (NPDA) is a 7-tuple...where:
-1) S is a finite set of states
-2) \sigma is a finite set of input symbols
-3) \gamma """""""""""""""""""" stack
-4) \delta is a transition function mapping 
-5) P_0 in S, the initial state
-6) Z_0 in \gamma the initial stack symbol
-7) F (c with underline thingy) S , the set of final states
+
+1. S is a finite set of states
+
+2. \sigma is a finite set of input symbols
+
+3.\gamma """""""""""""""""""" stack
+
+4. \delta is a transition function mapping 
+
+5. P_0 in S, the initial state
+
+6. Z_0 in \gamma the initial stack symbol
+
+7. F (c with underline thingy) S , the set of final states
 
 
 > We use empty stack model 
