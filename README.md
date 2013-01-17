@@ -1,3 +1,3 @@
 Notes
 =====
-Don't know what quickbooks are. 
+Class Notes for all the things! 
