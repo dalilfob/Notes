@@ -160,13 +160,20 @@ D(P,a,Z) = {(q1,r1),(q2,r2)}
 
 #### Definition of NPDA
 A nondeterministic Pushdown Automaton (NPDA) is a 7-tuple...where:
-1) S is a finite set of states
-2) \sigma is a finite set of input symbols
-3) \gamma """""""""""""""""""" stack
-4) \delta is a transition function mapping 
-5) P_0 in S, the initial state
-6) Z_0 in \gamma the initial stack symbol
-7) F (c with underline thingy) S , the set of final states
+
+1. S is a finite set of states
+
+2. \sigma is a finite set of input symbols
+
+3.\gamma """""""""""""""""""" stack
+
+4. \delta is a transition function mapping 
+
+5. P_0 in S, the initial state
+
+6. Z_0 in \gamma the initial stack symbol
+
+7. F (c with underline thingy) S , the set of final states
 
 
 > We use empty stack model 
