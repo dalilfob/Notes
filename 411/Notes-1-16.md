@@ -49,6 +49,7 @@ E -> aC
 ```
 
 1. Delete epsilon-production:
+
 ```
 E = {B,C}
 
@@ -60,6 +61,7 @@ E -> aC | a
 ```
 
 2. Delete single-productions
+
 ```
 B -> Sb | bCC | bC | b | CC | DaE | abb | DD
 ```
@@ -77,11 +79,14 @@ E -> aC | a
 ```
 
 4. Delete inaccessible symbols
+
 ```
 A = {S,a,B,b,C}
 E is inaccessible => remove
 ```
+
 **Proper Form**:
+
 ```
 S -> aBa | aa
 B -> Sb | bCC | bC | b | CC | C  
@@ -102,6 +107,7 @@ C -> <a><bb>
 ```
 
 ### CYK Example
+
 ```
 S -> AB | CA
 A -> a
@@ -124,6 +130,7 @@ Matrix table:
 - See drawing
 
 ### PDA 
+
 ```
 [a][b][a][b][b][b][a] } one way read only input tape
 ^
@@ -146,6 +153,7 @@ D(P,a,Z) = (q,g)
 
 ### NPDA
 - Machine always makes correct choice
+
 ```
 D(P,a,Z) = {(q1,r1),(q2,r2)}
 ```
