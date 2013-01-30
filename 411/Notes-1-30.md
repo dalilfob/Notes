@@ -162,3 +162,39 @@ A -> b | bSA
 |$      | e     | same  |
 
 - From ``{1,4,2,3}`` we can determine the left-most derivation (by numbering the grammar from left to right) 
+
+### FOLLOW_{k}(B)
+
+1. If ``B`` is the initial nonterminal
+     - include epsilon in ``FOLLOW_k(B)``
+2. If ``A -> (alpha)A(beta),
+    - include ``FIRST_k(beta) (concat) FOLLOW_k(A)`` 
+
+
+#### Example
+
+
+```
+S -> e | abA
+A -> Saa | b
+```
+
+- ``FOLLOW_1(S) = {e,a}``
+    - ``(A) = {e a}``
+- ``FOLLOW_2(S) = {e,aa}
+    - ``(A) = {e, aa}
+
+
+#### Example
+
+Given:
+
+```
+ S -> (S)S | [S]S | e
+```
+
+- Assume ``LL(1)`` and calculate 
+    - ``FIRST_1(S) = {(,[,e}
+    - ``FOLLOW_1(S) = {e,),]}
+
+- Construct table 
