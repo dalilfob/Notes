@@ -75,3 +75,37 @@ S     eps
 
 - Imply that ``aAy = yBx`` i.e that ``a = y, A = B, and y = x) 
 
+#### Example
+
+```
+S'  -> S
+S   -> 0S1 | A
+A   -> 1A  | 1
+```
+
+> Not LR(1)
+> See tree in notes 
+> Not LR(k) for any k actually 
+
+- Shift-reduce conflict 
+
+#### Example
+
+```
+S -> Ab | Bc
+A -> Aa | eps
+B -> Ba | eps
+```
+- Not ``LR(k)`` for any ``k``
+- See lectre notes on BB 
+- Abitrary number of a's , no fixed value of k
+
+- Reduce-Reduce conflict 
+
+#### Example
+
+```
+(0) S` -> S
+(1) S  -> SaSb
+(2) S  -> eps 
+```
