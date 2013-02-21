@@ -132,7 +132,7 @@ public class MatrixMul {
   public void print(int [][] m) {
     for (int [] i : m) {
       for (int j : i) {
-        System.out.printf("%2d ",j);
+        System.out.printf("%d ",j);
       } 
       System.out.println();
     }
@@ -140,9 +140,9 @@ public class MatrixMul {
 
   public int [][] generate(int n, int seed) {
     int [][] z = new int[n][n];
-    for (int [] i : z) {
-      for (int j : i) {
-        j = seed;
+    for (int i = 0; i < n; ++i) {
+      for (int j = 0; j < n; ++j) {
+        z[i][j] = seed;
       }
     }
     return z;
@@ -151,14 +151,19 @@ public class MatrixMul {
   public static void main(String...args) {
     MatrixMul m = new MatrixMul();
     long s, e;
+    int size = 0;
+
 
     int max = 13;
+    int [][] a;
+    int [][] b;
+
 
     System.out.println("Classic\n=========\n");
     for (int i = 1; i < max; ++i) {
-      int size = (int)Math.pow(2,i);
-      int [][] a = m.generate(size,2);
-      int [][] b = m.generate(size,2);
+      size = (int)Math.pow(2,i);
+      a = m.generate(size,2);
+      b = m.generate(size,2);
 
       s = System.nanoTime();
       m.classic(a,b);
@@ -170,9 +175,9 @@ public class MatrixMul {
 
     System.out.println("\nDivide and Conquer\n====================\n");
     for (int i = 1; i < max; ++i) {
-      int size = (int)Math.pow(2,i);
-      int [][] a = m.generate(size,2);
-      int [][] b = m.generate(size,2);
+      size = (int)Math.pow(2,i);
+      a = m.generate(size,2);
+      b = m.generate(size,2);
 
       s = System.nanoTime();
       m.divideConq(a,b);
@@ -184,9 +189,9 @@ public class MatrixMul {
 
     System.out.println("\nStrassen\n=========\n");
     for (int i = 1; i < max; ++i) {
-      int size = (int)Math.pow(2,i);
-      int [][] a = m.generate(size,2);
-      int [][] b = m.generate(size,2);
+      size = (int)Math.pow(2,i);
+      a = m.generate(size,2);
+      b = m.generate(size,2);
 
       s = System.nanoTime();
       m.strassen(a,b);
