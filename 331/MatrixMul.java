@@ -24,16 +24,14 @@ public class MatrixMul {
     }
     else {
 
-      int [][][] x = new int[4][q][q];
-      int [][][] y = new int[4][q][q];
+      int [][][][] x = new int[2][4][q][q];
       int [][][] z = new int[4][q][q];
-      this.split(x,a);
-      this.split(y,b);
+      this.split(x,a,b);
 
-      z[0] = add(divideConq(x[0],y[0]), divideConq(x[1],y[2]));
-      z[1] = add(divideConq(x[0],y[1]), divideConq(x[1],y[3]));
-      z[2] = add(divideConq(x[2],y[0]), divideConq(x[3],y[2]));
-      z[3] = add(divideConq(x[2],y[1]), divideConq(x[3],y[3]));
+      z[0] = add(divideConq(x[0][0],x[1][0]), divideConq(x[0][1],x[1][2]));
+      z[1] = add(divideConq(x[0][0],x[1][1]), divideConq(x[0][1],x[1][3]));
+      z[2] = add(divideConq(x[0][2],x[1][0]), divideConq(x[0][3],x[1][2]));
+      z[3] = add(divideConq(x[0][2],x[1][1]), divideConq(x[0][3],x[1][3]));
 
       c = reconstruct(z);
     }
@@ -51,20 +49,18 @@ public class MatrixMul {
     }
     else {
 
+      int [][][][] x = new int[2][4][q][q];
       int [][][] p = new int[7][q][q];
-      int [][][] x = new int[4][q][q];
-      int [][][] y = new int[4][q][q];
       int [][][] z = new int[4][q][q];
-      this.split(x,a);
-      this.split(y,b);
+      this.split(x,a,b);
 
-      p[0] = strassen(add(x[0], x[3]), add(y[0], y[3]));
-      p[1] = strassen(add(x[2], x[3]), y[0]);
-      p[2] = strassen(x[0], sub(y[1], y[3]));
-      p[3] = strassen(x[3], sub(y[2], y[0]));
-      p[4] = strassen(add(x[0], x[1]), y[3]);
-      p[5] = strassen(sub(x[2], x[0]), add(y[0], y[1]));
-      p[6] = strassen(sub(x[1], x[3]), add(y[2], y[3]));
+      p[0] = strassen(add(x[0][0], x[0][3]), add(x[1][0], x[1][3]));
+      p[1] = strassen(add(x[0][2], x[0][3]), x[1][0]);
+      p[2] = strassen(x[0][0], sub(x[1][1], x[1][3]));
+      p[3] = strassen(x[0][3], sub(x[1][2], x[1][0]));
+      p[4] = strassen(add(x[0][0], x[0][1]), x[1][3]);
+      p[5] = strassen(sub(x[0][2], x[0][0]), add(x[1][0], x[1][1]));
+      p[6] = strassen(sub(x[0][1], x[0][3]), add(x[1][2], x[1][3]));
 
       z[0] = add(sub(add(p[0],p[3]),p[4]),p[6]);
       z[1] = add(p[2],p[4]);
@@ -77,14 +73,18 @@ public class MatrixMul {
     return c;
   }
 
-  public void split(int [][][] m, int [][] s) {
+  public void split(int [][][][] m, int [][] a, int [][] b) {
     int n = m[0][0].length;
     for (int i = 0; i < n; ++i) {
       for (int j = 0; j < n; ++j) {
-        m[0][i][j] = s[i][j];
-        m[1][i][j] = s[i][j+n];
-        m[2][i][j] = s[i+n][j];
-        m[3][i][j] = s[i+n][j+n];
+        m[0][0][i][j] = a[i][j];
+        m[0][1][i][j] = a[i][j+n];
+        m[0][2][i][j] = a[i+n][j];
+        m[0][3][i][j] = a[i+n][j+n];
+        m[1][0][i][j] = b[i][j];
+        m[1][1][i][j] = b[i][j+n];
+        m[1][2][i][j] = b[i+n][j];
+        m[1][3][i][j] = b[i+n][j+n];
       }  
     }
   }
@@ -129,55 +129,76 @@ public class MatrixMul {
     return z;
   }
 
+  public void print(int [][] m) {
+    for (int [] i : m) {
+      for (int j : i) {
+        System.out.printf("%d ",j);
+      } 
+      System.out.println();
+    }
+  }
+
+  public int [][] generate(int n, int seed) {
+    int [][] z = new int[n][n];
+    for (int i = 0; i < n; ++i) {
+      for (int j = 0; j < n; ++j) {
+        z[i][j] = seed;
+      }
+    }
+    return z;
+  }
+
   public static void main(String...args) {
     MatrixMul m = new MatrixMul();
+    long s, e;
+    int size = 0;
 
-    int [][] a = new int[4][4];
-    
-    int [][] b = {{5,6,7,8},{10,12,14,16},{15,18,21,24},{20,24,28,32}};
 
-    int [][] c = {{5,10,15,20},{6,12,18,24},{7,14,21,28},{8,16,24,32,40}};
+    int max = 13;
+    int [][] a;
+    int [][] b;
 
-    int [][] d = new int[4][4];
 
-    int [][][] f = new int[4][4][4];
-    f[0] = a;
-    f[1] = b;
-    f[2] = c;
-    f[3] = d;
+    System.out.println("Classic\n=========\n");
+    for (int i = 1; i < max; ++i) {
+      size = (int)Math.pow(2,i);
+      a = m.generate(size,2);
+      b = m.generate(size,2);
 
-    int [][] x = {{1,2},{3,4}};
-    int [][] y = {{5,6},{7,8}};
+      s = System.nanoTime();
+      m.classic(a,b);
+      e = System.nanoTime();
+      
+      System.out.printf("Size: %4d | Execution Time: %8d ns\n", size, e-s);
 
-    int [][] z = m.divideConq(x,y);
-
-    for(int i = 0; i < z.length; ++i) {
-      for (int j = 0; j < z.length; ++j) {
-        System.out.printf("%2d ", z[i][j]);
-      }
-      System.out.println();
     }
 
-    System.out.println();
+    System.out.println("\nDivide and Conquer\n====================\n");
+    for (int i = 1; i < max; ++i) {
+      size = (int)Math.pow(2,i);
+      a = m.generate(size,2);
+      b = m.generate(size,2);
 
-    z = m.classic(x,y);
+      s = System.nanoTime();
+      m.divideConq(a,b);
+      e = System.nanoTime();
+      
+      System.out.printf("Size: %4d | Execution Time: %8d ns\n", size, e-s);
 
-    for(int i = 0; i < z.length; ++i) {
-      for (int j = 0; j < z.length; ++j) {
-        System.out.printf("%2d ", z[i][j]);
-      }
-      System.out.println();
     }
 
-    System.out.println();
+    System.out.println("\nStrassen\n=========\n");
+    for (int i = 1; i < max; ++i) {
+      size = (int)Math.pow(2,i);
+      a = m.generate(size,2);
+      b = m.generate(size,2);
 
-    z = m.strassen(b,c);
+      s = System.nanoTime();
+      m.strassen(a,b);
+      e = System.nanoTime();
+      
+      System.out.printf("Size: %4d | Execution Time: %8d ns\n", size, e-s);
 
-    for(int i = 0; i < z.length; ++i) {
-      for (int j = 0; j < z.length; ++j) {
-        System.out.printf("%2d ", z[i][j]);
-      }
-      System.out.println();
     }
 
   }
