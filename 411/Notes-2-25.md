@@ -280,3 +280,15 @@ A0S           eps         4,3,3,1
 > Because we reached root, and input is empty string, we accept
 > Output is 1,3,3,4 (reversed because bottom up) 
 > Also, grammar is Right Recursive, doesn't affect LR(k) 
+
+#### Another Example
+
+```
+S -> Ab | Bc
+A -> Aa | eps
+B -> Ba | eps
+```
+
+> Language cannot be LR(k) for any k
+> Because of left recursion 
+> It's an identical grammar to the above example 
