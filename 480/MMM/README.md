@@ -1,0 +1,2 @@
+# Mythical Man Month Notes
+
