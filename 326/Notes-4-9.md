@@ -70,6 +70,7 @@
         - NOT VALID, no negatives
 
 ### Venn Diagram in Notes
+- Figure 1
 
 ```
 P(A) = 15 / 32
@@ -112,8 +113,8 @@ P(A | B) = P(A n B)
 ```
 
 ### Venn Diagram in Notes
-    - Figure 2
-    - Triple venn diagram
+- Figure 2
+- Triple venn diagram
 
 
 
@@ -122,4 +123,91 @@ a) P(A|B) = P(A n B) / P(B) = (.04 + .06)/(.04 + .06 + .11 + .19) = .25
 
 b) P(B | C') = P(B n C') = (.6 + .19) / (1 - P(C)) 
              = .25 / (1 - .4) = .417
+
+c) P(B u C | A') = P((B u C) n A') / P(A')
+
+= (.09 + .11 + .19) / (.09 + .11 + .19 + .11) = 0.78
+
+d) P(A n B n C | B n C) = P((A n B n C) n (B n C)) / P ( B n C)
+
+= P(A n B C) / P(B n C) = 0.04 / (.04 + 11) = .267
 ```
+
+### Example
+
+- Probability new airport will get a design award is 0.16 ``P(D) = 0.16``, probability given award for a efficient use of materials is 0.24 ``(P(E) = 0.24)``, and probability get both awards if 0.11
+
+    - Find probability get design award given
+        - a) They got an efficient use award
+            - ``P(D|E) = P(D n E) / P(E) = 0.11 / 0.24 = .458``
+        - b) They did not get efficient use award
+            - ``P(D|E') = P(D n E) / P(E') = (0.16 - .11) / 1 - .24)``
+
+
+### Independent Events
+- A is independent of B if and only if P(A | B) = P(A)
+    - **Example**: ``P(plane crash | beyonce sing) = P(plane crash)``
+
+### Conditional Probability
+- ``P(A n B) / P(B) = P(A | B)``
+- ``P(A n B) = P(A|B)P(B)
+
+- If A and B are independent, then ``P(A|B) = P(A)`` and ``P(A n B) = P(A)*P(B)``
+
+
+    - **Example**: Given a multiple choice quiz with 3 problems, where each problem has 4 choices
+        - Probability of 3 correct via random guess
+            - ``P(A n B n C) = P(A)*P(B)*P(C)``
+            - ``(.25)(.25)(.25) = 0.156``
+
+    - **Example**: Among 24 invoices, 4 contain errors, while others do not
+        - 2 invoices randomly checked, what's the probability of the following?
+            - Both contain errors
+                - P(1st contains error) = ``4/24`` 
+                - P(2nd contains error) = ``3/23``
+                - product = .0217
+            - Neither contains errors
+                - P(1st no error) = ``20/24``
+                - P(2nd no error) = ``19/23``
+                - product = 0.688
+            - 1 contains errors
+                - First is good: ``(20/24)(4/23) = .145`` 
+                - 2nd is good: ``(4/24)(20/23) = .145``
+                - Sum: .29
+
+### Monte Hall Problem
+- 3 doors
+    - car
+    - goat
+    - goat
+- Choose a door
+- Monte then opens a door with a goat
+- Monte gives choice to stay or switch doors
+
+#### Example: Never Switch
+
+1 Goat, 2 car, 3 Goat    
+
+
+```
+you     monte       win/lose
+---     -----       --------
+1       3           lost
+2       1 or 3      win
+3       1           lose
+```
+
+> win 1/3 chance
+
+#### Example: Always Switch
+
+```
+you     monte       win/lost
+---     -----       --------
+1       3           win
+2       1 or 3      lose
+3       1           win
+```
+
+> win 2/3 chance
+
