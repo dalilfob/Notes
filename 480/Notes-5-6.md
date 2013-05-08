@@ -30,3 +30,5 @@
 
 ## Design Pattern
 - Subject Observer
+- Adapter Pattern
+    - Prefer composition to substitution
