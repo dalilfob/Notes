@@ -59,3 +59,5 @@
         - creates ConcreteCommand object and sets receiver
     - Invoker (MenuItem)
         - Asks command to carry out request
+- Easy undo/redo
+- Easy to add commands
